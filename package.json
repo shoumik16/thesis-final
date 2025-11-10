@@ -1,0 +1,26 @@
+{
+  "name": "letserror",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "analyze-css": "^2.4.17",
+    "axe-core": "^4.11.0",
+    "chrome-launcher": "^1.2.1",
+    "cssstats": "^4.0.5",
+    "html-validator": "^6.0.1",
+    "lighthouse": "^13.0.1",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^24.28.0",
+    "web-vitals": "^5.1.0"
+  },
+  "devDependencies": {
+    "html-validator-cli": "^7.0.1"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "url": "https://ecommercegemini25pro.vercel.app/products.html",
+  "timestamp": "2025-11-22T11:40:00.664Z",
+  "axe": {
+    "violationsCount": 0,
+    "passesCount": 19,
+    "incompleteCount": 1,
+    "inapplicableCount": 41,
+    "violations": []
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": []
+  },
+  "cssStats": {
+    "length": 11048,
+    "rules": 94,
+    "declarations": 324,
+    "selectors": 100,
+    "propertiesCount": 53,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 52.5,
+    "LCP": 264
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 100,
+    "cssScore": 100,
+    "htmlScore": 100,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 80
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "url": "https://ecommercegtp5.vercel.app/",
+  "timestamp": "2025-11-22T11:50:36.657Z",
+  "axe": {
+    "violationsCount": 0,
+    "passesCount": 22,
+    "incompleteCount": 2,
+    "inapplicableCount": 38,
+    "violations": []
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "info",
+        "lastLine": 25,
+        "lastColumn": 46,
+        "firstColumn": 5,
+        "subType": "warning",
+        "message": "The “banner” role is unnecessary for element “header”.",
+        "extract": "t</a>\n    <header class=\"site-header\" role=\"banner\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 42
+      },
+      {
+        "type": "info",
+        "lastLine": 48,
+        "lastColumn": 71,
+        "firstColumn": 7,
+        "subType": "warning",
+        "message": "Possible misuse of “aria-label”. (If you disagree with this warning, file an issue report or send e-mail to www-validator@w3.org.)",
+        "extract": "v>\n\n      <div class=\"container controls\" aria-label=\"Filters and sorting\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 65
+      },
+      {
+        "type": "info",
+        "lastLine": 84,
+        "lastColumn": 51,
+        "firstColumn": 5,
+        "subType": "warning",
+        "message": "The “contentinfo” role is unnecessary for element “footer”.",
+        "extract": "ain>\n\n    <footer class=\"site-footer\" role=\"contentinfo\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 47
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 10464,
+    "rules": 103,
+    "declarations": 312,
+    "selectors": 116,
+    "propertiesCount": 53,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 80.09999999403954,
+    "LCP": 288
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 100,
+    "cssScore": 100,
+    "htmlScore": 100,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 80
+  }
+}

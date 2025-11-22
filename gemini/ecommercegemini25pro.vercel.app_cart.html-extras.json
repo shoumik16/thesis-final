@@ -1,0 +1,46 @@
+{
+  "url": "https://ecommercegemini25pro.vercel.app/cart.html",
+  "timestamp": "2025-11-22T11:40:21.750Z",
+  "axe": {
+    "violationsCount": 1,
+    "passesCount": 15,
+    "incompleteCount": 1,
+    "inapplicableCount": 45,
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+        "nodesCount": 1
+      }
+    ]
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": []
+  },
+  "cssStats": {
+    "length": 11048,
+    "rules": 94,
+    "declarations": 324,
+    "selectors": 100,
+    "propertiesCount": 53,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 57.70000000298023,
+    "LCP": 240
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 90,
+    "cssScore": 100,
+    "htmlScore": 100,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 78
+  }
+}

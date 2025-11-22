@@ -1,0 +1,96 @@
+{
+  "url": "https://ecommerce-claudesonnet.vercel.app/",
+  "timestamp": "2025-11-22T11:54:55.848Z",
+  "axe": {
+    "error": "axe.run failed: Could not load script"
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "info",
+        "lastLine": 54,
+        "lastColumn": 79,
+        "firstColumn": 13,
+        "subType": "warning",
+        "message": "The “navigation” role is unnecessary for element “nav”.",
+        "extract": "          <nav class=\"navbar\" role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 67
+      },
+      {
+        "type": "info",
+        "lastLine": 72,
+        "lastColumn": 40,
+        "firstColumn": 5,
+        "subType": "warning",
+        "message": "The “main” role is unnecessary for element “main”.",
+        "extract": "n -->\n    <main id=\"main-content\" role=\"main\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 36
+      },
+      {
+        "type": "error",
+        "lastLine": 111,
+        "lastColumn": 187,
+        "firstColumn": 142,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "elative;\"><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 111,
+        "lastColumn": 1156,
+        "firstColumn": 1111,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 111,
+        "lastColumn": 2119,
+        "firstColumn": 2074,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 147,
+        "lastColumn": 58,
+        "firstColumn": 5,
+        "message": "A “script” element with a “defer” attribute must not have a “type” attribute with the value “module”.",
+        "extract": "ter>\n\n    <script type=\"module\" src=\"./scripts/app.js\" defer=\"\"></scri",
+        "hiliteStart": 10,
+        "hiliteLength": 54
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 45086,
+    "rules": 337,
+    "declarations": 1125,
+    "selectors": 320,
+    "propertiesCount": 83,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 48.400000005960464,
+    "LCP": 228
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 0,
+    "cssScore": 100,
+    "htmlScore": 60,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 52
+  }
+}

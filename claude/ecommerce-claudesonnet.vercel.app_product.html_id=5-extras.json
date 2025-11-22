@@ -1,0 +1,86 @@
+{
+  "url": "https://ecommerce-claudesonnet.vercel.app/product.html?id=5",
+  "timestamp": "2025-11-22T11:57:52.069Z",
+  "axe": {
+    "error": "axe.run failed: Could not load script"
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "info",
+        "lastLine": 45,
+        "lastColumn": 79,
+        "firstColumn": 13,
+        "subType": "warning",
+        "message": "The “navigation” role is unnecessary for element “nav”.",
+        "extract": "          <nav class=\"navbar\" role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 67
+      },
+      {
+        "type": "error",
+        "lastLine": 72,
+        "lastColumn": 1461,
+        "firstColumn": 1284,
+        "message": "The “aria-valuemin” attribute must not be used on an element which has a “min” attribute.",
+        "extract": "−</button><input type=\"number\" id=\"quantity\" class=\"quantity-input\" min=\"1\" max=\"99\" aria-label=\"Product quantity\" role=\"spinbutton\" aria-valuenow=\"1\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 178
+      },
+      {
+        "type": "error",
+        "lastLine": 72,
+        "lastColumn": 1461,
+        "firstColumn": 1284,
+        "message": "The “aria-valuemax” attribute must not be used on an element which has a “max” attribute.",
+        "extract": "−</button><input type=\"number\" id=\"quantity\" class=\"quantity-input\" min=\"1\" max=\"99\" aria-label=\"Product quantity\" role=\"spinbutton\" aria-valuenow=\"1\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 178
+      },
+      {
+        "type": "info",
+        "lastLine": 72,
+        "lastColumn": 1461,
+        "firstColumn": 1284,
+        "subType": "warning",
+        "message": "The “spinbutton” role is unnecessary for element “input” whose type is “number”.",
+        "extract": "−</button><input type=\"number\" id=\"quantity\" class=\"quantity-input\" min=\"1\" max=\"99\" aria-label=\"Product quantity\" role=\"spinbutton\" aria-valuenow=\"1\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 178
+      },
+      {
+        "type": "error",
+        "lastLine": 109,
+        "lastColumn": 58,
+        "firstColumn": 5,
+        "message": "A “script” element with a “defer” attribute must not have a “type” attribute with the value “module”.",
+        "extract": "ter>\n\n    <script type=\"module\" src=\"./scripts/app.js\" defer=\"\"></scri",
+        "hiliteStart": 10,
+        "hiliteLength": 54
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 45086,
+    "rules": 337,
+    "declarations": 1125,
+    "selectors": 320,
+    "propertiesCount": 83,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 58.70000000298023,
+    "LCP": 456
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 0,
+    "cssScore": 100,
+    "htmlScore": 70,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 54
+  }
+}

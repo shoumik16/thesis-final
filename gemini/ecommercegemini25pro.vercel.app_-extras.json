@@ -1,0 +1,57 @@
+{
+  "url": "https://ecommercegemini25pro.vercel.app/",
+  "timestamp": "2025-11-22T11:39:17.662Z",
+  "axe": {
+    "violationsCount": 1,
+    "passesCount": 18,
+    "incompleteCount": 1,
+    "inapplicableCount": 42,
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+        "nodesCount": 14
+      }
+    ]
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "error",
+        "lastLine": 7,
+        "lastColumn": 143,
+        "firstColumn": 5,
+        "message": "A document must not include more than one “meta” element with its “name” attribute set to the value “description”.",
+        "extract": "ts.\">\n    <meta name=\"description\" content=\"Discover a wide range of products from electronics to apparel. High-quality items at unbeatable prices.\">\n\n    ",
+        "hiliteStart": 10,
+        "hiliteLength": 139
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 11048,
+    "rules": 94,
+    "declarations": 324,
+    "selectors": 100,
+    "propertiesCount": 53,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 45.1000000089407,
+    "LCP": 272
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 90,
+    "cssScore": 100,
+    "htmlScore": 90,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 76
+  }
+}

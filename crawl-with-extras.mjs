@@ -10,14 +10,13 @@ import cssstats from 'cssstats';
 import fetch from 'node-fetch';
 
 
-
-
-
-const BASE_URL = 'https://www.sust.edu/';
-const MAX_PAGES = 8;
-const MAX_DEPTH = 2;
+const BASE_URL = 'https://ecommerce-claudesonnet.vercel.app/';
+const MAX_PAGES = 15;
+const MAX_DEPTH = 3;
 const REQUEST_PAUSE_MS = 1500;
 const REPORT_DIR = 'reports';
+const SUMMARY_DIR = 'summaries';
+if (!fs.existsSync(SUMMARY_DIR)) fs.mkdirSync(SUMMARY_DIR, { recursive: true });
 
 if (!fs.existsSync(REPORT_DIR)) fs.mkdirSync(REPORT_DIR, { recursive: true });
 
@@ -118,18 +117,6 @@ async function runAxeOnPage(page) {
 // ✅ Retry W3C validator on 429
 
 
-/*async function validateHtmlWithW3C(html) {
-  try {
-    const result = await validator({ data: html, format: 'json' });
-    return result;
-  } catch (err) {
-    if (err.message.includes('429')) {
-      console.warn('⚠️ Remote validator rate-limited, skipping...');
-      return { skipped: true, reason: 'Rate-limited (429)' };
-    }
-    return { error: `html-validator failed: ${err.message}` };
-  }
-}*/
 
 
 
@@ -255,56 +242,141 @@ async function analyzeCss(cssText) {
 
 
 
+
+
 async function collectWebVitalsFromPage(page) {
   try {
-    await page.addScriptTag({ url: 'https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js' });
-    await sleep(3000);
-    return await page.evaluate(async () => {
-      const results = {};
-      const waitForMetric = (fn) => new Promise(resolve => {
-        try { fn(metric => { results[metric.name] = metric.value; resolve(); }) } catch { resolve(); }
-      });
-      const tasks = [
-        waitForMetric(webVitals.getLCP),
-        waitForMetric(webVitals.getCLS),
-        waitForMetric(webVitals.getFID).catch(()=>{}),
-        waitForMetric(webVitals.getTTFB).catch(()=>{}),
-        waitForMetric(webVitals.getINP).catch(()=>{})
-      ].map(p => p.catch(()=>{}));
-      await Promise.race([Promise.all(tasks), new Promise(r => setTimeout(r, 3000))]);
-      return results;
+    // Wait until page is fully loaded (important!)
+    await page.waitForLoadState?.('load') || await new Promise(r => setTimeout(r, 1000));
+
+    // Inject metrics safely after page has loaded
+    await page.evaluate(() => {
+      if (!window.__metrics) {
+        window.__metrics = {};
+        window.__metricsPromise = new Promise(resolve => {
+          // TTFB
+          const navEntry = performance.getEntriesByType('navigation')[0];
+          if (navEntry) window.__metrics.TTFB = navEntry.responseStart;
+
+          // LCP
+          new PerformanceObserver((entries) => {
+            const last = entries.getEntries().pop();
+            if (last) window.__metrics.LCP = last.startTime;
+          }).observe({ type: 'largest-contentful-paint', buffered: true });
+
+          // CLS
+          new PerformanceObserver((entries) => {
+            window.__metrics.CLS = entries.reduce((sum, e) => sum + e.value, 0);
+          }).observe({ type: 'layout-shift', buffered: true });
+
+          // INP
+          new PerformanceObserver((entries) => {
+            const last = entries.getEntries().pop();
+            if (last) window.__metrics.INP = last.processingStart;
+          }).observe({ type: 'event', buffered: true });
+
+          // Resolve after short timeout
+          setTimeout(() => resolve(window.__metrics), 3000);
+        });
+      }
     });
+
+    // Wait for the metrics to be populated
+    const metrics = await page.evaluate(() => window.__metricsPromise);
+    return metrics;
+
   } catch (err) {
-    return { error: `web-vitals injection failed: ${err.message}` };
+    console.error("Web Vitals collection failed:", err);
+    return { error: err.message };
   }
 }
 
-
 async function getCarbonForUrl(url) {
-  // Wait 1 second before each API request to avoid rate-limit
   await sleep(1000);
 
   try {
     const resp = await fetch(`https://api.websitecarbon.com/site?url=${encodeURIComponent(url)}`);
     if (!resp.ok) {
-      if (resp.status === 429) {
-        // Too many requests — back off more
-        await sleep(5000);
-        return { skipped: true, reason: 'Carbon API rate-limited (429) — backed off 5s.' };
-      }
-      return { error: `API error ${resp.status}` };
+      return null; // Return null on any HTTP error
     }
 
     const data = await resp.json();
     return {
-      co2PerVisit: data.statistics.co2.grid.grams,
-      green: data.green,
-      cleanerThan: data.cleanerThan,
+      co2PerVisit: data?.statistics?.co2?.grid?.grams ?? null,
+      green: data?.green ?? null,
+      cleanerThan: data?.cleanerThan ?? null,
     };
-  } catch (err) {
-    return { error: err.message };
+  } catch {
+    return null; // Return null on network or parsing error
   }
 }
+
+
+
+
+// Sleep helper
+
+
+// Main function to get CO2 estimate
+
+function scoreFromWebVitals(v) {
+  if (!v) return 0;
+  let score = 100;
+
+  if (v.LCP && v.LCP > 4000) score -= 40;
+  else if (v.LCP > 2500) score -= 20;
+
+  if (v.CLS && v.CLS > 0.25) score -= 30;
+  else if (v.CLS > 0.1) score -= 10;
+
+  if (v.TTFB && v.TTFB > 1800) score -= 20;
+  else if (v.TTFB > 800) score -= 10;
+
+  if (v.INP && v.INP > 300) score -= 20;
+  else if (v.INP > 200) score -= 10;
+
+  return Math.max(0, score);
+}
+
+function scoreFromAxe(axe) {
+  if (!axe || axe.violationsCount == null) return 0;
+  if (axe.violationsCount === 0) return 100;
+  return Math.max(0, 100 - axe.violationsCount * 10);
+}
+
+function scoreFromCss(css) {
+  if (!css) return 0;
+  if (css.status?.startsWith("⚠️")) return 60;
+  return 100;
+}
+
+function scoreFromHtml(html) {
+  if (!html?.messages) return 0;
+  const errors = html.messages.filter(m => m.type === "error").length;
+  return Math.max(0, 100 - errors * 10);
+}
+
+function scoreFromCarbon(carbon) {
+  if (!carbon || carbon.co2PerVisit == null) return 0;
+  if (carbon.co2PerVisit < 0.3) return 100;
+  if (carbon.co2PerVisit < 1) return 80;
+  if (carbon.co2PerVisit < 2) return 60;
+  return 40;
+}
+
+function computeOverall(s) {
+  const values = [
+    s.axeScore,
+    s.cssScore,
+    s.htmlScore,
+    s.webVitalsScore,
+    s.carbonScore,
+  ].filter(v => typeof v === "number");
+
+  if (!values.length) return 0;
+  return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+}
+
 
 
 // ---- Audit ----
@@ -334,8 +406,19 @@ const carbon = await getCarbonForUrl(url);
 
     
 
-    const cssStats = analyzeCss(cssText || '');
+    const cssStats =await analyzeCss(cssText || '');
     const lighthouseHtml = await flow.generateReport();
+    // ---- SCORING ----
+const scores = {
+  axeScore: scoreFromAxe(axeRes),
+  cssScore: scoreFromCss(cssStats),
+  htmlScore: scoreFromHtml(htmlValidation),
+  webVitalsScore: scoreFromWebVitals(webVitals),
+  carbonScore: scoreFromCarbon(carbon),
+};
+
+scores.combinedOverall = computeOverall(scores);
+//u
     const safe = safeNameFromUrl(url);
     const lhPath = `${REPORT_DIR}/${safe}-lighthouse.html`;
     const extraPath = `${REPORT_DIR}/${safe}-extras.json`;
@@ -344,7 +427,7 @@ const carbon = await getCarbonForUrl(url);
     fs.writeFileSync(
       extraPath,
       JSON.stringify(
-        { url, timestamp: new Date().toISOString(), axe: axeRes, htmlValidation, cssStats, webVitals, carbon },
+        { url, timestamp: new Date().toISOString(), axe: axeRes, htmlValidation, cssStats, webVitals, carbon,scores  },
         null,
         2
       ),
@@ -352,7 +435,38 @@ const carbon = await getCarbonForUrl(url);
     );
 
     console.log(`✅ Saved lightweight reports for ${url}`);
-  } catch (err) {
+  if (!fs.existsSync(SUMMARY_DIR))
+      fs.mkdirSync(SUMMARY_DIR, { recursive: true });
+
+    const summary = {
+      url,
+      timestamp: new Date().toISOString(),
+      scores,
+      accessibilityViolations: axeRes?.violationsCount ?? null,
+      htmlErrors:
+        htmlValidation?.messages?.filter(m => m.type === 'error')?.length ??
+        null,
+
+      cssRules: cssStats?.rules ?? null,
+      cssDeclarations: cssStats?.declarations ?? null,
+      cssSize: cssStats?.length ?? null,
+
+      lcp: webVitals?.LCP ?? null,
+      cls: webVitals?.CLS ?? null,
+      ttfb: webVitals?.TTFB ?? null,
+      inp: webVitals?.INP ?? null,
+
+      co2PerVisit: carbon?.co2PerVisit ?? null
+    };
+
+    const summaryPath = `${SUMMARY_DIR}/${safe}-summary.json`;
+    fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2), 'utf-8');
+
+    console.log(`📊 Summary generated: ${summaryPath}`);
+    console.log(`✅ Saved lightweight reports for ${url}`);
+
+  }
+catch (err) {
     console.error(`❌ Error auditing ${url}:`, err);
   } finally {
     try { await flow.disconnect(); } catch {}

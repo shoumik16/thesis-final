@@ -1,0 +1,175 @@
+{
+  "url": "https://ecommerce-claudesonnet.vercel.app/products.html",
+  "timestamp": "2025-11-22T11:55:51.167Z",
+  "axe": {
+    "error": "axe.run failed: Could not load script"
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "info",
+        "lastLine": 45,
+        "lastColumn": 79,
+        "firstColumn": 13,
+        "subType": "warning",
+        "message": "The “navigation” role is unnecessary for element “nav”.",
+        "extract": "          <nav class=\"navbar\" role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 67
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 160,
+        "firstColumn": 115,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "y=\"false\"><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 1129,
+        "firstColumn": 1084,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 2092,
+        "firstColumn": 2047,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 3072,
+        "firstColumn": 3027,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 4030,
+        "firstColumn": 3985,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 4962,
+        "firstColumn": 4917,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 5895,
+        "firstColumn": 5850,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 6852,
+        "firstColumn": 6807,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 7846,
+        "firstColumn": 7801,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 8832,
+        "firstColumn": 8787,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 9814,
+        "firstColumn": 9769,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 112,
+        "lastColumn": 10797,
+        "firstColumn": 10752,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": "</article><article class=\"product-card\" role=\"listitem\"><a hre",
+        "hiliteStart": 10,
+        "hiliteLength": 46
+      },
+      {
+        "type": "error",
+        "lastLine": 149,
+        "lastColumn": 58,
+        "firstColumn": 5,
+        "message": "A “script” element with a “defer” attribute must not have a “type” attribute with the value “module”.",
+        "extract": "ter>\n\n    <script type=\"module\" src=\"./scripts/app.js\" defer=\"\"></scri",
+        "hiliteStart": 10,
+        "hiliteLength": 54
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 45086,
+    "rules": 337,
+    "declarations": 1125,
+    "selectors": 320,
+    "propertiesCount": 83,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 52.20000000298023,
+    "LCP": 3852
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 0,
+    "cssScore": 100,
+    "htmlScore": 0,
+    "webVitalsScore": 80,
+    "carbonScore": 0,
+    "combinedOverall": 36
+  }
+}

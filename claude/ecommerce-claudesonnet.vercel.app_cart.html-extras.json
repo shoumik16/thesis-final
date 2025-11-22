@@ -1,0 +1,108 @@
+{
+  "url": "https://ecommerce-claudesonnet.vercel.app/cart.html",
+  "timestamp": "2025-11-22T11:56:10.578Z",
+  "axe": {
+    "error": "axe.run failed: Could not load script"
+  },
+  "htmlValidation": {
+    "version": "25.11.04 (d1e3522)",
+    "messages": [
+      {
+        "type": "info",
+        "lastLine": 32,
+        "lastColumn": 79,
+        "firstColumn": 13,
+        "subType": "warning",
+        "message": "The “navigation” role is unnecessary for element “nav”.",
+        "extract": "          <nav class=\"navbar\" role=\"navigation\" aria-label=\"Main navigation\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 67
+      },
+      {
+        "type": "error",
+        "lastLine": 62,
+        "lastColumn": 147,
+        "firstColumn": 105,
+        "message": "Bad value “listitem” for attribute “role” on element “article”.",
+        "extract": ": block;\"><article class=\"cart-item\" role=\"listitem\"><img s",
+        "hiliteStart": 10,
+        "hiliteLength": 43
+      },
+      {
+        "type": "error",
+        "lastLine": 62,
+        "lastColumn": 960,
+        "firstColumn": 769,
+        "message": "The “aria-valuemin” attribute must not be used on an element which has a “min” attribute.",
+        "extract": "−</button><input type=\"number\" class=\"quantity-input\" min=\"1\" data-product-id=\"1\" aria-label=\"Quantity of Classic Running Shoes\" role=\"spinbutton\" aria-valuenow=\"2\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 192
+      },
+      {
+        "type": "info",
+        "lastLine": 62,
+        "lastColumn": 960,
+        "firstColumn": 769,
+        "subType": "warning",
+        "message": "The “aria-valuemax” attribute should not be used on an “input” element which has a “type” attribute whose value is “number”.",
+        "extract": "−</button><input type=\"number\" class=\"quantity-input\" min=\"1\" data-product-id=\"1\" aria-label=\"Quantity of Classic Running Shoes\" role=\"spinbutton\" aria-valuenow=\"2\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 192
+      },
+      {
+        "type": "info",
+        "lastLine": 62,
+        "lastColumn": 960,
+        "firstColumn": 769,
+        "subType": "warning",
+        "message": "The “spinbutton” role is unnecessary for element “input” whose type is “number”.",
+        "extract": "−</button><input type=\"number\" class=\"quantity-input\" min=\"1\" data-product-id=\"1\" aria-label=\"Quantity of Classic Running Shoes\" role=\"spinbutton\" aria-valuenow=\"2\" aria-valuemin=\"1\" aria-valuemax=\"99\"><butto",
+        "hiliteStart": 10,
+        "hiliteLength": 192
+      },
+      {
+        "type": "info",
+        "lastLine": 73,
+        "lastColumn": 140,
+        "firstColumn": 17,
+        "subType": "warning",
+        "message": "The “complementary” role is unnecessary for element “aside”.",
+        "extract": "          <aside class=\"cart-summary\" id=\"cartSummary\" aria-labelledby=\"summary-heading\" role=\"complementary\" style=\"display: block;\">\n     ",
+        "hiliteStart": 10,
+        "hiliteLength": 124
+      },
+      {
+        "type": "error",
+        "lastLine": 137,
+        "lastColumn": 58,
+        "firstColumn": 5,
+        "message": "A “script” element with a “defer” attribute must not have a “type” attribute with the value “module”.",
+        "extract": "ter>\n\n    <script type=\"module\" src=\"./scripts/app.js\" defer=\"\"></scri",
+        "hiliteStart": 10,
+        "hiliteLength": 54
+      }
+    ]
+  },
+  "cssStats": {
+    "length": 45086,
+    "rules": 337,
+    "declarations": 1125,
+    "selectors": 320,
+    "propertiesCount": 83,
+    "status": "✅ Within best-practice limits",
+    "warnings": []
+  },
+  "webVitals": {
+    "TTFB": 61.29999999701977,
+    "LCP": 372
+  },
+  "carbon": null,
+  "scores": {
+    "axeScore": 0,
+    "cssScore": 100,
+    "htmlScore": 70,
+    "webVitalsScore": 100,
+    "carbonScore": 0,
+    "combinedOverall": 54
+  }
+}
